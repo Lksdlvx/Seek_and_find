@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-sp_json = "/Users/loukas/Desktop/Python/Cartographie Invdrs/data/space_invader"
+sp_json = "/Users/loukas/Desktop/Python/Seek & find/data/space_invader"
 
 with open(sp_json, "r") as read_file:
     data = json.load(read_file)
@@ -17,22 +17,15 @@ longitudes = []
 
 for element in data:
     index = element["proprietes"]["index"]
-    index_s.append(index)
-
-for element in data:
     nom = element["proprietes"]["name"]
-    noms.append(nom)
-
-for element in data:
     adresse = element["proprietes"]["adresse"]
-    adresses.append(adresse)
-
-for element in data:
     latitude = element["proprietes"]["geometry"]["latitude"]
-    latitudes.append(latitude)
-
-for element in data:
     longitude = element["proprietes"]["geometry"]["longitude"]
+
+    index_s.append(index)
+    noms.append(nom)
+    adresses.append(adresse)
+    latitudes.append(latitude)
     longitudes.append(longitude)
 
 statuts = ["Actif" if index >= 0 else "X" for index, _ in enumerate(noms)]
